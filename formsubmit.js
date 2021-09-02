@@ -1,0 +1,13 @@
+$(document).ready(function(){
+    $('form').submit(function(event){
+        event.preventDefault();
+        $.ajax({
+            url:'formrequest/'+$(this).attr('action'),
+            type:$(this).attr('method'),
+            data:$(this).serializeArray(),
+            success:function(data){
+                $('.notification').html(data);
+            }
+        });
+    });
+});
